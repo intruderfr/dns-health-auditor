@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dns-health-auditor"
+version = "0.1.0"
+description = "Audit a domain's DNS health — records, email auth, DNSSEC, and propagation across public resolvers."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [
+    { name = "Aslam Ahamed", email = "aslamahamed47@gmail.com" },
+]
+keywords = [
+    "dns",
+    "dnssec",
+    "spf",
+    "dkim",
+    "dmarc",
+    "email-authentication",
+    "networking",
+    "devops",
+    "sre",
+    "security-audit",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "Intended Audience :: Information Technology",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Internet :: Name Service (DNS)",
+    "Topic :: System :: Networking",
+    "Topic :: System :: Systems Administration",
+]
+dependencies = [
+    "dnspython>=2.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+dns-audit = "dns_auditor.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/intruderfr/dns-health-auditor"
+Repository = "https://github.com/intruderfr/dns-health-auditor"
+Issues = "https://github.com/intruderfr/dns-health-auditor/issues"
+
+[tool.setuptools.packages.find]
+include = ["dns_auditor*"]
+exclude = ["tests*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
